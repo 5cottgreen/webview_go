@@ -293,6 +293,7 @@ WEBVIEW_API void webview_navigate(webview_t w, const char *url);
  */
 WEBVIEW_API void webview_set_html(webview_t w, const char *html);
 
+WEBVIEW_API webview_error_t webview_set_user_agent(webview_t w, const char *user_agent);
 /**
  * Injects JavaScript code to be executed immediately upon loading a page.
  * The code will be executed before @c window.onload.

@@ -25,16 +25,17 @@ void CgoWebViewUnbind(webview_t w, const char *name);
 */
 import "C"
 import (
-	_ "github.com/webview/webview_go/libs/mswebview2"
-	_ "github.com/webview/webview_go/libs/mswebview2/include"
-	_ "github.com/webview/webview_go/libs/webview"
-	_ "github.com/webview/webview_go/libs/webview/include"
 	"encoding/json"
 	"errors"
 	"reflect"
 	"runtime"
 	"sync"
 	"unsafe"
+
+	_ "github.com/5cottgreen/webview_go/libs/mswebview2"
+	_ "github.com/5cottgreen/webview_go/libs/mswebview2/include"
+	_ "github.com/5cottgreen/webview_go/libs/webview"
+	_ "github.com/5cottgreen/webview_go/libs/webview/include"
 )
 
 func init() {
@@ -60,6 +61,7 @@ const (
 )
 
 type WebView interface {
+	SetUserAgent(userAgent string)
 
 	// Run runs the main loop until it's terminated. After this function exits -
 	// you must destroy the webview.
@@ -178,6 +180,12 @@ func (w *webview) Navigate(url string) {
 	s := C.CString(url)
 	defer C.free(unsafe.Pointer(s))
 	C.webview_navigate(w.w, s)
+}
+
+func (w *webview) SetUserAgent(userAgent string) {
+	s := C.CString(userAgent)
+	defer C.free(unsafe.Pointer(s))
+	C.webview_set_user_agent(w.w, s)
 }
 
 func (w *webview) SetHtml(html string) {

@@ -27,13 +27,13 @@ go mod init example.com/app
 Save one of the example programs into your project directory.
 
 ```sh
-curl -sSLo main.go "https://raw.githubusercontent.com/webview/webview_go/master/examples/basic/main.go"
+curl -sSLo main.go "https://raw.githubusercontent.com/5cottgreen/webview_go/master/examples/basic/main.go"
 ```
 
 Install dependencies.
 
 ```sh
-go get github.com/webview/webview_go
+go get github.com/5cottgreen/webview_go
 ```
 
 Build the example. On Windows, add `-ldflags="-H windowsgui"` to the command line.
