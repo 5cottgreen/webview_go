@@ -7,6 +7,8 @@ func main() {
 	defer w.Destroy()
 	w.SetTitle("Basic Example")
 	w.SetSize(480, 320, webview.HintNone)
-	w.SetHtml("Thanks for using webview!")
+	w.SetUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64)")
+	w.Navigate("https://www.whatismybrowser.com/detect/what-is-my-user-agent/")
+
 	w.Run()
 }
